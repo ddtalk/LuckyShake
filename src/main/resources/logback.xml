@@ -1,0 +1,124 @@
+<configuration scan="true" scanPeriod="10 seconds">
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.root}/draw.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.root}/draw.log.%d{yyyy-MM-dd}</fileNamePattern>
+
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger{35} - %msg %n</pattern>
+            <immediateFlush>${log.flush:-true}</immediateFlush>
+        </encoder>
+    </appender>
+
+    <appender name="start" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.root}/start.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.root}/start.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d [%thread] - %msg %n</pattern>
+            <immediateFlush>${log.flush:-true}</immediateFlush>
+        </encoder>
+    </appender>
+
+    <appender name="play" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.root}/play.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.root}/play.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d [%thread] - %msg %n</pattern>
+            <immediateFlush>${log.flush:-true}</immediateFlush>
+        </encoder>
+    </appender>
+
+    <appender name="lucky" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.root}/lucky.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.root}/lucky.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d [%thread] - %msg %n</pattern>
+            <immediateFlush>${log.flush:-true}</immediateFlush>
+        </encoder>
+    </appender>
+    
+    <appender name="debug" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.root}/debug.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.root}/debug.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d [%thread] - %msg %n</pattern>
+            <immediateFlush>${log.flush:-true}</immediateFlush>
+        </encoder>
+    </appender>
+
+    <appender name="result" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.root}/result.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.root}/result.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d [%thread] - %msg %n</pattern>
+            <immediateFlush>${log.flush:-true}</immediateFlush>
+        </encoder>
+    </appender>
+
+    <logger name="result" level="INFO" additivity="false">
+        <appender-ref ref="result"/>
+    </logger>
+
+    <logger name="start" level="INFO" additivity="false">
+        <appender-ref ref="start"/>
+    </logger>
+
+    <logger name="lucky" level="INFO" additivity="false">
+        <appender-ref ref="lucky"/>
+    </logger>
+    
+     <logger name="debug" level="INFO" additivity="false">
+        <appender-ref ref="debug"/>
+    </logger>
+
+    <logger name="play" level="INFO" additivity="false">
+        <appender-ref ref="play"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>

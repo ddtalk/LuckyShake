@@ -1,0 +1,18 @@
+<assembly>
+    <id>deploy</id>
+    <baseDirectory>wukong-draw.war</baseDirectory>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>target/exploded/wukong-draw.war</directory>
+            <includes>
+                <include>**</include>
+            </includes>
+            <outputDirectory>/</outputDirectory>
+        </fileSet>
+    </fileSets>
+
+</assembly>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection"/>
+        <meta content="yes" name="apple-touch-fullscreen"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+        <title>钉钉摇一摇抽奖</title>
+    </head>
+    <body>
+        标题：<input id="title" type="text"/>
+        奖品数量：<input id="prizesTotal" type="text"/>
+        总时间：<input id="totalTime" type="text"/>
+        <a id="add" href="javascript:;">添加</a>
+        <div id="result">
+
+        </div>
+        <a id="reset" href="javascript:;">重置</a>
+        <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script type="text/javascript">
+        (function() {
+
+            function getUrlParam(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) {
+                    return unescape(r[2]);
+                }
+                return null;
+            }
+
+            $('#add').on('click', function() {
+                $.ajax({
+                     url:'/add?title=' + $('#title').val() + '&prizesTotal=' + $('#prizesTotal').val() + '&totalTime=' + $('#totalTime').val(),
+                     dataType:"jsonp",
+                     jsonp:"callback",
+                     success : function(data) {
+                        var href = 'http://s.dingtalk.com/market/dingtalk/shake_lucky_pc2.php?playId=' + data.playId;
+                        $('#result').append($('<a href="' + href + '" target="_blank">' + href + '<br/></a>'));
+                     },
+                     error : function() {
+                     }
+                });
+            });
+            $('#reset').on('click', function() {
+                $.ajax({
+                     url:'/reset',
+                     dataType:"jsonp",
+                     jsonp:"callback",
+                     success : function(data) {
+                        alert('重置成功')
+                     },
+                     error : function() {
+                        alert('重置失败')
+                     }
+                });
+            });
+        })();
+        </script>
+    </body>
+</html>

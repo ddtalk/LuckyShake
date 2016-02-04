@@ -1,0 +1,21 @@
+# Created by http://www.gitignore.io
+
+#antx.properties
+### Eclipse ###
+*.pydevproject
+.metadata
+.gradle
+tmp/
+target/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.project
+.classpath
+*.iml
+.idea/
+.DS_Store
